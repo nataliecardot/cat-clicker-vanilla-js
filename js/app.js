@@ -1,5 +1,5 @@
 
-/* ======= Model ======= */
+/* MODEL */
 
 let model = {
   currentCat: null,
@@ -33,15 +33,15 @@ let model = {
 };
 
 
-/* ======= Octopus ======= */
+/* OCTOPUS */
 
 let octopus = {
 
   init: function() {
-    // Set our current cat to the first one in the list
+    // Set current cat to first one in list
     model.currentCat = model.cats[0];
 
-    // Tell our views to initialize
+    // Tell views to initialize
     catListView.init();
     catView.init();
   },
@@ -54,12 +54,12 @@ let octopus = {
     return model.cats;
   },
 
-  // Set the currently-selected cat to the object passed in
+  // Set currently selected cat to object passed in
   setCurrentCat: function(cat) {
     model.currentCat = cat;
   },
 
-  // Increments the counter for the currently-selected cat
+  // Increments counter for currently selected cat
   incrementCounter: function() {
     model.currentCat.clickCount++;
     catView.render();
@@ -67,28 +67,28 @@ let octopus = {
 };
 
 
-/* ======= View ======= */
+/* VIEW */
 
 let catView = {
 
   init: function() {
-    // Store pointers to our DOM elements for easy access later
+    // Store pointers to DOM elements for easy access later
     this.catElem = document.getElementById('cat');
     this.catNameElem = document.getElementById('cat-name');
     this.catImageElem = document.getElementById('cat-img');
     this.countElem = document.getElementById('cat-count');
 
-    // On click, increment the current cat's counter
+    // On click, increment current cat's counter
     this.catImageElem.addEventListener('click', function() {
       octopus.incrementCounter();
     });
 
-    // Render this view (update the DOM elements with the right values)
+    // Render this view (update DOM elements with right values)
     this.render();
   },
 
   render: function() {
-    // Update the DOM elements with values from the current cat
+    // Update DOM elements with values from current cat
     let currentCat = octopus.getCurrentCat();
     this.countElem.textContent = currentCat.clickCount;
     this.catNameElem.textContent = currentCat.name;
@@ -99,31 +99,31 @@ let catView = {
 let catListView = {
 
   init: function() {
-    // Store the DOM element for easy access later
+    // Store DOM element for easy access later
     this.catListElem = document.getElementById('cat-list');
 
-    // Render this view (update the DOM elements with the right values)
+    // Render this view (update DOM elements with right values)
     this.render();
   },
 
   render: function() {
     let cat, elem, i;
-    // Get the cats we'll be rendering from the octopus
+    // Get cats we'll be rendering from octopus
     let cats = octopus.getCats();
 
-    // Empty the cat list
+    // Empty cat list
     this.catListElem.innerHTML = '';
 
-    // Loop over the cats
+    // Loop over cats
     for (i = 0; i < cats.length; i++) {
-      // This is the cat we're currently looping over
+      // This is cat we're currently looping over
       cat = cats[i];
 
-      // Make a new cat list item and set its text
+      // Make new cat list item and set its text
       elem = document.createElement('li');
       elem.textContent = cat.name;
 
-      /* On click, setCurrentCat and render the catView (this uses our closure-in-a-loop trick to connect the value of the cat variable to the click event function) */
+      /* On click, setCurrentCat and render catView (this uses closure-in-a-loop trick to connect value of cat variable to click event function) */
       elem.addEventListener('click', (function(catCopy) {
         return function() {
           octopus.setCurrentCat(catCopy);
@@ -131,7 +131,7 @@ let catListView = {
         };
       })(cat));
 
-      // Finally, add the element to the list
+      // Finally, add element to list
       this.catListElem.appendChild(elem);
     }
   }
