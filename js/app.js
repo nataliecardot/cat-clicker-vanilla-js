@@ -27,7 +27,7 @@ let model = {
     {
       clickCount: 0,
       name: 'Muffin',
-      imgSrc: 'img/Muffin.jpg'
+      imgSrc: 'img/Muffin.jpeg'
     }
   ]
 };
