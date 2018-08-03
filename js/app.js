@@ -1,5 +1,4 @@
-
-/* MODEL */
+/* MODEL (where data is stored, from both user and server) */
 
 let model = {
   currentCat: null,
@@ -33,7 +32,7 @@ let model = {
 };
 
 
-/* OCTOPUS */
+/* OCTOPUS (connects model and view. Holds things together, while keeping them separate enough to allow changes in individual pieces without disrupting the rest. Also called controller, view model, presenter) */
 
 let octopus = {
 
@@ -67,7 +66,7 @@ let octopus = {
 };
 
 
-/* VIEW */
+/* VIEW (user's interface to application, both for giving application data and for reading data)*/
 
 let catView = {
 
@@ -114,7 +113,7 @@ let catListView = {
     // Empty cat list
     this.catListElem.innerHTML = '';
 
-    // Loop over cats
+    // Loops over cats
     for (i = 0; i < cats.length; i++) {
       // This is cat we're currently looping over
       cat = cats[i];
@@ -131,7 +130,7 @@ let catListView = {
         };
       })(cat));
 
-      // Finally, add element to list
+      // Adds li for each cat inside ul with ID cat-list
       this.catListElem.appendChild(elem);
     }
   }
