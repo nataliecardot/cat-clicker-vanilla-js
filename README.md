@@ -4,7 +4,9 @@ This is a simple app built with vanilla JavaScript made for practice with the mo
 
 ## How to View
 
-Clone or download the repository and open the index.html file in your browser.
+[Click here](https://nataliecardot.com/cat-clicker-vanilla-js/index.html) to view on my website.
+
+Alternatively, clone or download the repository and open the index.html file in your browser.
 
 ## Functionality
 
