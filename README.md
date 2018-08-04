@@ -1,6 +1,6 @@
 # Cat Clicker
 
-This is a simple app built with vanilla JavaScript made for practice with the model, view, and octopus (or controller) architectural design pattern.
+This is a simple app built with vanilla JavaScript made for practice with the model, view, and octopus (or controller) design pattern.
 
 ## How to View
 
