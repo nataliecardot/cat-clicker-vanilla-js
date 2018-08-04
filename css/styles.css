@@ -98,3 +98,26 @@ button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
+
+/* Special styling for screens up to 767px wide (landscape phones) */
+@media screen and (max-width: 767px) {
+  .enclosing-box {
+    width: 90%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .cat-names {
+    width: 90%;
+    text-align: center;
+  }
+
+  .cat-display {
+    width: 90%;
+    text-align: center;
+  }
+}
