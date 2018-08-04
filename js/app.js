@@ -2,6 +2,7 @@
 
 let model = {
   currentCat: null,
+  adminShow: false,
   cats: [
     {
       clickCount: 0,
@@ -43,6 +44,8 @@ let octopus = {
     // Tell views to initialize
     catListView.init();
     catView.init();
+    adminView.init();
+    adminView.hide();
   },
 
   getCurrentCat: function() {
@@ -62,6 +65,34 @@ let octopus = {
   incrementCounter: function() {
     model.currentCat.clickCount++;
     catView.render();
+    adminView.render();
+  },
+
+  // Runs when 'Admin' button is clicked. Note: adminShow set to false in model object on page load
+  adminDisplay: function() {
+    if (model.adminShow === false) {
+      model.adminShow = true;
+      adminView.show(); // Displays admin input boxes and buttons
+    }
+    else if (model.adminShow === true) {
+      model.adminShow = false;
+      adminView.hide(); // Hides admin input boxes and buttons
+    }
+  },
+
+  // Hides admin display when cancel button is clicked
+  adminCancel: function() {
+    adminView.hide();
+  },
+
+  // Hides admin display and saves new cat data when save button is clicked
+  adminSave: function() {
+    model.currentCat.name = adminCatName.value;
+    model.currentCat.imgSrc = adminCatURL.value;
+    model.currentCat.clickCount = adminCatClicks.value;
+    catView.render();
+    catListView.render();
+    adminView.hide();
   }
 };
 
@@ -101,7 +132,7 @@ let catListView = {
     // Store DOM element for easy access later
     this.catListElem = document.getElementById('cat-list');
 
-    // Render this view (update DOM elements with right values)
+    // Render this view (update DOM elements with correct values)
     this.render();
   },
 
@@ -127,6 +158,8 @@ let catListView = {
         return function() {
           octopus.setCurrentCat(catCopy);
           catView.render();
+          // If adminView is open, updates fields with info about current cat
+          adminView.render();
         };
       })(cat));
 
@@ -136,5 +169,48 @@ let catListView = {
   }
 };
 
-// Make it go!
+let adminView = {
+  init: function() {
+    this.adminCatName = document.getElementById('adminCatName');
+    this.adminCatURL = document.getElementById('adminCatURL');
+    this.adminCatClicks = document.getElementById('adminCatClicks');
+    let admin = document.getElementById('admin');
+
+    this.adminBtn = document.getElementById('adminBtn');
+    this.adminCancel = document.getElementById('adminCancel');
+    this.adminSave = document.getElementById('adminSave');
+
+    this.adminBtn.addEventListener('click', function() {
+      octopus.adminDisplay();
+    });
+
+    this.adminCancel.addEventListener('click', function() {
+      octopus.adminCancel();
+    });
+
+    this.adminSave.addEventListener('click', function() {
+      octopus.adminSave();
+    });
+
+  },
+
+  render: function() {
+    let currentCat = octopus.getCurrentCat();
+    this.adminCatName.value = currentCat.name;
+    this.adminCatURL.value = currentCat.imgSrc;
+    this.adminCatClicks.value = currentCat.clickCount;
+  },
+
+  show: function() {
+    // Gets info based on last-clicked cat
+    this.render();
+    admin.style.display = 'block';
+  },
+
+  hide: function() {
+    admin.style.display = 'none';
+  }
+
+};
+
 octopus.init();

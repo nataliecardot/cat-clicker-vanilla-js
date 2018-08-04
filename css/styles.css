@@ -1,7 +1,100 @@
-img {
+body {
+  font-family: sans-serif;
+  background: url(../img/intersection.png);
+  /* Removes scrollbar caused by adding 100vh to outermost div (with class .enclosing-box-parent) */
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.enclosing-box-parent {
+  height: 100vh; /* Made scrollbar appear, solved by adding margin: 0 to body */
+  display: flex;
+  align-items: center;
+}
+
+.enclosing-box {
+  background: #fff;
+  border-radius: 5px;
+  padding: 1em;
+  width: 80%;
+  /* Horizontally centers box */
+  margin: 0 auto;
+}
+
+/* Remove default bullet points and left padding for list of cat names */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+h1 {
+  color: #697c82;
+  /* Default is 0.67em. Removing for consistent width between image and bottom of enclosing box */
+  -webkit-margin-before: 0;
+  font-family: "Kaushan Script";
+}
+
+h2 {
+  color: #666;
+  font-family: "Kaushan Script";
+}
+
+.header {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  /* Centers slong the main axis; since main axis is in direction row by default, this centers horizontally */
+  justify-content: center;
+}
+
+/* Flex item in div with class .container */
+.cat-names {
+  width: 30%;
+}
+
+/* Flex item in div with class .container */
+.cat-display {
   width: 50%;
 }
 
-ul {
-  list-style-type: none;
+/* Makes # clicks display on same line as text instead of on next line */
+.cat-count {
+  display: inline-block;
+}
+
+/* Cat image is inside div with class cat-display. This makes it take up full space of div (otherwise it's full size) */
+img {
+  /* Adds some extra space */
+  margin-top: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.cat-names-list {
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+li:hover {
+  font-weight: bold;
+}
+
+button {
+  margin-top: 1em;
+  background-color: #158080;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.1em;
+  padding: 9px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }

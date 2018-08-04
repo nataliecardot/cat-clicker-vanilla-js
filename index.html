@@ -2,16 +2,42 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Cat Clicker</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <ul id="cat-list"></ul>
-    <div id="cat">
-      <h2 id="cat-name"></h2>
-      <div id="cat-count"></div>
-      <img id="cat-img" src="" alt="cute cat">
-    </div>
+    <div class="enclosing-box-parent">
+      <div class="enclosing-box">
+        <div class="header">
+          <h1>Cat Clicker</h1>
+          <p>Click on the cat's name to display the cat's image.</p>
+        </div>
+        <div class="container">
+          <div class="cat-names">
+            <h2>Cats</h2>
+            <ul id="cat-list" class="cat-names-list"></ul>
+
+            <button id="adminBtn">Admin</button>
+
+            <div id="admin">
+              <form id="adminForm">
+                <p>Cat Name:  <input type="text" class="adminInput" id= "adminCatName"></p>
+                <p>Image URL:   <input type="text" class="adminCatUrl" id= "adminCatURL"></p>
+                <p># Clicks:  <input type="text" class="adminCatClicks" id=  "adminCatClicks"></p>
+              </form>
+                <button id="adminCancel">Cancel</button>
+                <button id="adminSave">Save</button>
+            </div>
+          </div>
+          <div id="cat" class="cat-display">
+            <h2 id="cat-name"></h2>
+            Clicks: <div id="cat-count" class="cat-count"></div>
+            <img id="cat-img" src="" alt="cute cat">
+          </div>
+        </div> <!-- End of container -->
+      </div> <!-- End of enclosing-box -->
+    </div> <!-- End of enclosing box parent -->
     <script src="js/app.js"></script>
   </body>
 </html>
