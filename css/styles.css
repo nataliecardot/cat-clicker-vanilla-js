@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: url(../img/intersection.png);
   /* Removes scrollbar caused by adding 100vh to outermost div (with class .enclosing-box-parent) */
   margin: 0;
@@ -12,6 +12,7 @@ body {
 .enclosing-box-parent {
   height: 100vh; /* Made scrollbar appear, solved by adding margin: 0 to body */
   display: flex;
+  /* Centers items in cross axis, which is vertical direction since display: flex sets flex-direction: row (horizontal direction, main axis) by default */
   align-items: center;
 }
 
@@ -31,14 +32,14 @@ ul {
 }
 
 h1 {
-  color: #697c82;
+  color: #2f5a67;
   /* Default is 0.67em. Removing for consistent width between image and bottom of enclosing box */
   -webkit-margin-before: 0;
   font-family: "Kaushan Script";
 }
 
 h2 {
-  color: #666;
+  color: #5f8591;
   font-family: "Kaushan Script";
 }
 
@@ -48,8 +49,18 @@ h2 {
 
 .container {
   display: flex;
-  /* Centers slong the main axis; since main axis is in direction row by default, this centers horizontally */
+  /* Centers along the main axis; since main axis is in direction row by default, this centers horizontally */
   justify-content: center;
+}
+
+/* App description text */
+.description {
+  margin: 0 10em 0 10em;
+}
+
+/* Styles link to GitHub repo */
+a {
+  color: #2ea6a0;
 }
 
 /* Flex item in div with class .container */
@@ -62,17 +73,11 @@ h2 {
   width: 50%;
 }
 
-/* Makes # clicks display on same line as text instead of on next line */
-.cat-count {
-  display: inline-block;
-}
-
 /* Cat image is inside div with class cat-display. This makes it take up full space of div (otherwise it's full size) */
 img {
-  /* Adds some extra space */
-  margin-top: 0.5em;
   width: 100%;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .cat-names-list {
@@ -85,8 +90,9 @@ li:hover {
 }
 
 button {
-  margin-top: 1em;
-  background-color: #158080;
+  margin-top: 0;
+  /* Matches h2 text color */
+  background-color: #5f8591;
   color: #fff;
   border-radius: 5px;
   border: none;
@@ -94,12 +100,39 @@ button {
   padding: 9px;
 }
 
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 1.6em;
+  width: 9em;
+  color: #666;
+  /* Adds space between text and input box outlines */
+  padding-left: 0.4em;
+}
+
 button:hover {
   cursor: pointer;
+  /* Resizes button along 2D plane. Value passed in represents scaling to be applied along x-axis. In effect, it makes button larger on hover */
   transform: scale(1.05);
 }
 
-/* Special styling for screens up to 767px wide (landscape phones) */
+.cat-count {
+  font-size: 90px;
+  color: #fff;
+  /* Applies 2d transformation (x, y). Used to move number down to be displayed on image */
+  transform: translate(40px, 17px);
+  /* Must be absolute for number to display overtop of cat image */
+  position: absolute;
+  /* Horizontal shadow position, vertical shadow position, shadow color. The 'a' in rgba is alpha, which sets opacity, with 1.0 meaning fully opaque */
+  text-shadow: 4px 6px rgba(5, 4, 4, 0.62);
+}
+
+.cat-count:hover {
+  /* To match rest of image */
+  cursor: pointer;
+}
+
+/* Mobile phones/extra small screens */
 @media screen and (max-width: 767px) {
   .enclosing-box {
     width: 90%;
@@ -109,6 +142,18 @@ button:hover {
 
   .container {
     flex-wrap: wrap;
+  }
+
+  /* App description text */
+  .description {
+    margin: 0 1em 0 1em;
+  }
+
+  .cat-count {
+    font-size: 60px;
+    color: #fff;
+    transform: translate(30px, 15px);
+    position: absolute;
   }
 
   .cat-names {

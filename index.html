@@ -8,7 +8,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Cat Clicker</title>
     <link rel="shortcut icon" href="img/logo-teal-favicon.png">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
@@ -16,7 +17,9 @@
       <div class="enclosing-box">
         <div class="header">
           <h1>Cat Clicker</h1>
-          <p>Click on the cat's name to display the cat's image.</p>
+          <!-- Had to give these a special class or margin added with CSS also adds for text (also p elements) inside admin tools  -->
+          <p class="description">This app employs the model-view-controller design pattern. View the source code on <a href="https://github.com/nataliecardot/cat-clicker-vanilla-js" target="_blank">GitHub</a>.</p><br>
+          <p class="description">Choose a cat from the list and click the image to increment the count. You can edit the click count, cat name, and image URL from within the admin tools.</p>
         </div>
         <div class="container">
           <div class="cat-names">
@@ -27,9 +30,9 @@
 
             <div id="admin">
               <form id="adminForm">
-                <p>Cat Name:  <input type="text" class="adminInput" id= "adminCatName"></p>
+                <p>Cat name:  <input type="text" class="adminInput" id= "adminCatName"></p>
                 <p>Image URL:   <input type="text" class="adminCatUrl" id= "adminCatURL"></p>
-                <p># Clicks:  <input type="text" class="adminCatClicks" id=  "adminCatClicks"></p>
+                <p>Clicks:  <input type="text" class="adminCatClicks" id=  "adminCatClicks"></p>
               </form>
                 <button id="adminCancel">Cancel</button>
                 <button id="adminSave">Save</button>
@@ -37,7 +40,7 @@
           </div>
           <div id="cat" class="cat-display">
             <h2 id="cat-name"></h2>
-            Clicks: <div id="cat-count" class="cat-count"></div>
+            <div id="cat-count" class="cat-count"></div>
             <img id="cat-img" src="" alt="cute cat">
           </div>
         </div> <!-- End of container -->
