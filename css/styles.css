@@ -134,6 +134,11 @@ button:hover {
 
 /* Mobile phones/extra small screens */
 @media screen and (max-width: 767px) {
+  .enclosing-box-parent {
+    /* Height is 100vh for other breakpoints, but causes top to be cut off for some mobile phones */
+    height: auto;
+  }
+
   .enclosing-box {
     width: 90%;
     margin-top: 1em;
