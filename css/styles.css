@@ -19,8 +19,8 @@ body {
 .enclosing-box {
   background: #fff;
   border-radius: 5px;
-  padding: 1em;
-  width: 80%;
+  padding: 1.8rem 0;
+  width: 70%;
   /* Horizontally centers box */
   margin: 0 auto;
 }
@@ -169,5 +169,13 @@ button:hover {
   .cat-display {
     width: 90%;
     text-align: center;
+  }
+}
+
+/* Very large laptops/computers */
+@media screen and (min-width: 1800px) {
+  .enclosing-box {
+    padding: 3rem 0;
+    width: 60%;
   }
 }
